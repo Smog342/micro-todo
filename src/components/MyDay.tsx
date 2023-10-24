@@ -1,19 +1,22 @@
 import { CoffeeOutlined } from "@ant-design/icons"
-import Task from "./Task"
+import TaskComponent from "./TaskComponent"
 import TaskCreator from "./TaskCreator"
+import {Task, Context} from "../Context"
+import { useContext } from "react"
 
 function MyDay(){
 
+    const {tasks} = useContext(Context);
+
     return(
-        <div className="pl-40">
-            <div className=" flex text-blue-600">
+        <div className="pl-40 overflow-auto h-full">
+            <div className="flex text-blue-600">
                 <CoffeeOutlined className="text-3xl mr-2"></CoffeeOutlined>
                 <p className="text-2xl">Мой день</p>
             </div>
             <TaskCreator></TaskCreator>
-            <Task id={0} text={"Aaa"} date={"11/10/20"} important={false} solved={false}></Task>
-            <Task id={1} text={"Bbb"} date={"11/20/10"} important={false} solved={false}></Task>
-            <Task id={2} text={"Ccc"} date={"10/20/11"} important={false} solved={false}></Task>
+            {tasks.map((task : Task) => 
+            <TaskComponent id={task.id} text={task.text} date={task.date} important={task.important} finished={task.finished} board={task.board} key={task.id}></TaskComponent>)}
         </div>
     )
 

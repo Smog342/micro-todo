@@ -14,7 +14,7 @@ function OnLoadingComponent(Component: React.FC){
             return (
                 <div className="flex w-screen h-screen flex-col justify-center items-center">
                     <Spin></Spin>
-                    <p className="text-green-500 font-bold">Идёт загрузка, подождите...</p>
+                    <p className="text-blue-500 font-bold">Идёт загрузка, подождите...</p>
                 </div>
             )
 

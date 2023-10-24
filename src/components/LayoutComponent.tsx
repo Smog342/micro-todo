@@ -9,6 +9,10 @@ import {Route, Routes, useNavigate} from "react-router-dom";
 import TaskCreator from "./TaskCreator";
 import MainHeader from "./MainHeader";
 import MyDay from "./MyDay";
+import ImportantComponent from "./ImportantComponent";
+import PlannedComponent from "./PlannedComponent";
+import AssignedComponent from "./AssignedComponent";
+import TasksListComponent from "./TasksListComponent";
 
 const {Search} = Input;
 
@@ -52,10 +56,10 @@ function LayoutComponent(){
                         <Routes>
                             <Route path="/" element={<div></div>}></Route>
                             <Route path="myday" element={<MyDay></MyDay>}></Route>
-                            <Route path="important" element={<div>Important</div>}></Route>
-                            <Route path="schedule" element={<div>Schedule</div>}></Route>
-                            <Route path="assigned" element={<div>Assigned</div>}></Route>
-                            <Route path="tasks" element={<div>Tasks</div>}></Route>
+                            <Route path="important" element={<ImportantComponent></ImportantComponent>}></Route>
+                            <Route path="schedule" element={<PlannedComponent></PlannedComponent>}></Route>
+                            <Route path="assigned" element={<AssignedComponent></AssignedComponent>}></Route>
+                            <Route path="tasks" element={<TasksListComponent></TasksListComponent>}></Route>
                         </Routes>
                     </Content>
                 </Layout>

@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Button } from 'antd';
 import OnLoadingComponent from './components/OnLoadingComponent';
-import Task from './components/Task';
+import Task from './components/TaskComponent';
 import LayoutComponent from './components/LayoutComponent';
 
 function App() {
