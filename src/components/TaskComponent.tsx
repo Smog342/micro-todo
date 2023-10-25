@@ -38,7 +38,10 @@ function TaskComponent(taskProps: Task){
                 </Button>
             </div>
         </div>
-        <p className="text-sm m-0">{taskProps.date}</p>
+        <div className="flex">
+            <p className="text-sm mt-0 mb-0 ml-0 mr-2">{taskProps.date}</p>
+            {taskProps.board !== 'important' || 'schedule' || 'tasks' ? <p className="text-sm m-0">{taskProps.board}</p> : <></>}
+        </div>
         </div>
     )
 

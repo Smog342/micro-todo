@@ -15,7 +15,7 @@ function TasksListComponent(){
                 <p className="text-2xl">Задачи</p>
             </div>
             <TaskCreator></TaskCreator>
-            {tasks.map((task : Task) => (task.board === '' ? <TaskComponent id={task.id} text={task.text} date={task.date} important={task.important} finished={task.finished} board={task.board} key={task.id}></TaskComponent> : <></>))}
+            {tasks.map((task : Task) => (<TaskComponent id={task.id} text={task.text} date={task.date} important={task.important} finished={task.finished} board={task.board} key={task.id}></TaskComponent>))}
         </div>
     )
 

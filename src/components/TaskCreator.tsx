@@ -6,7 +6,7 @@ import {Task, Context} from "../Context";
 
 function TaskCreator(){
 
-    const {tasks, setTasks} = useContext(Context);
+    const {tasks, setTasks, currentBoard} = useContext(Context);
 
     const [datePickerAllowed, setDatePickerAllowed] = useState(false);
 
@@ -33,9 +33,9 @@ function TaskCreator(){
                     id: Math.random() * 1000,
                     text: text,
                     date: date,
-                    important: false,
+                    important: currentBoard === 'important'? true : false,
                     finished: false,
-                    board: ''
+                    board: currentBoard
                 })
             }}>
                 <PlusOutlined className="text-blue-600 text-xl"></PlusOutlined>
