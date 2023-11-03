@@ -1,6 +1,6 @@
-import { Layout, Space } from "antd";
-import { Content } from "antd/es/layout/layout";
-import {Route, Routes} from "react-router-dom";
+import { Col, ConfigProvider, Layout, Row, Space } from "antd";
+import { Content, Header } from "antd/es/layout/layout";
+import { Route, Routes } from "react-router-dom";
 import MainHeader from "./MainHeader";
 import MyDay from "./MyDay";
 import ImportantComponent from "./ImportantComponent";
@@ -12,32 +12,73 @@ import { Context } from "../Context";
 import { useContext } from "react";
 import BoardComponent from "./BoardComponent";
 
-function LayoutComponent(){
+function LayoutComponent() {
+  const { currentBoard } = useContext(Context);
 
-    const {currentBoard} = useContext(Context);
-
-    return(
-        <Space className="">
-            <Layout className="w-screen h-screen">
-                <MainHeader></MainHeader>
-                <Layout hasSider className="">
-                    <LayoutSiderComponent></LayoutSiderComponent>
-                    <Content className="pl-10 pr-10">
-                        <Routes>
-                            <Route path="/" element={<div></div>}></Route>
-                            <Route path="Мой день" element={<MyDay></MyDay>}></Route>
-                            <Route path="important" element={<ImportantComponent></ImportantComponent>}></Route>
-                            <Route path="schedule" element={<PlannedComponent></PlannedComponent>}></Route>
-                            <Route path="assigned" element={<AssignedComponent></AssignedComponent>}></Route>
-                            <Route path="tasks" element={<TasksListComponent></TasksListComponent>}></Route>
-                            <Route path={currentBoard} element={<BoardComponent></BoardComponent>}></Route>
-                        </Routes>
-                    </Content>
-                </Layout>
-            </Layout>
-        </Space>
-    );
-
+  return (
+    <>
+      <Row>
+        <Col span={24}>
+          <MainHeader></MainHeader>
+        </Col>
+      </Row>
+      <ConfigProvider
+        theme={{
+          token: {
+            screenXSMin: 0,
+            screenXS: 0,
+            screenMDMin: 920,
+            screenMD: 920,
+            screenLGMin: 1010,
+            screenLG: 1010,
+          },
+        }}
+      >
+        <Row className="h-screen">
+          <Col
+            xs={0}
+            md={5}
+            lg={7}
+            className="h-full sc-920:min-w-[200px] sc-920:max-w-[200px] 
+            sc-1010:min-w-[290px] sc-1010:max-w-[290px] transition-all duration-100 ease-out"
+          >
+            <div className="bg-white shadow-sider-shadow h-full flex flex-col">
+              <LayoutSiderComponent></LayoutSiderComponent>
+              <div>Test</div>
+            </div>
+          </Col>
+          <Col flex="auto" className="h-full">
+            <Content className="">
+              <Routes>
+                <Route path="/" element={<div>Not empty</div>}></Route>
+                <Route path="myday" element={<MyDay></MyDay>}></Route>
+                <Route
+                  path="important"
+                  element={<ImportantComponent></ImportantComponent>}
+                ></Route>
+                <Route
+                  path="schedule"
+                  element={<PlannedComponent></PlannedComponent>}
+                ></Route>
+                <Route
+                  path="assigned"
+                  element={<AssignedComponent></AssignedComponent>}
+                ></Route>
+                <Route
+                  path="tasks"
+                  element={<TasksListComponent></TasksListComponent>}
+                ></Route>
+                <Route
+                  path={currentBoard}
+                  element={<BoardComponent></BoardComponent>}
+                ></Route>
+              </Routes>
+            </Content>
+          </Col>
+        </Row>
+      </ConfigProvider>
+    </>
+  );
 }
 
 export default LayoutComponent;
