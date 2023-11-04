@@ -8,7 +8,7 @@ function PlannedComponent() {
   const { tasks } = useContext(Context);
 
   return (
-    <div className="overflow-auto h-full">
+    <div className="pl-[24px] pr-[24px] overflow-auto h-full">
       <div className="flex text-blue-600">
         <ScheduleOutlined className="text-3xl mr-2"></ScheduleOutlined>
         <p className="text-2xl">Запланировано</p>

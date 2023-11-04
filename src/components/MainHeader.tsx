@@ -22,7 +22,7 @@ function MainHeader() {
       <div className="flex justify-between flex-1">
         <div className="font-semibold ml-[3px]">To Do</div>
         <div className="flex items-center justify-between">
-          <Search className="min-w-[400px] w-[400px]"></Search>
+          <Search className="w-[400px] block"></Search>
         </div>
         <div className="flex items-center">
           <Button

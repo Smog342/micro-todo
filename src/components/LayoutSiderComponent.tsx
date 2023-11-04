@@ -12,6 +12,7 @@ import Sider from "antd/es/layout/Sider";
 import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { Context } from "../Context";
+import "../App.css";
 
 function LayoutSiderComponent() {
   const navigate = useNavigate();
@@ -65,6 +66,7 @@ function LayoutSiderComponent() {
               itemBorderRadius: 0,
               itemMarginBlock: 0,
               itemPaddingInline: 10,
+              iconMarginInlineEnd: 16,
             },
           },
         }}
