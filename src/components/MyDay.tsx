@@ -8,14 +8,14 @@ function MyDay() {
   const { tasks } = useContext(Context);
 
   return (
-    <div className="pl-[24px] pr-[24px] overflow-auto h-full">
+    <div className="pl-[24px] pr-[24px] overflow-auto h-full flex flex-col">
       <div className="flex text-blue-600">
         <CoffeeOutlined className="text-3xl mr-2"></CoffeeOutlined>
         <p className="text-2xl">Мой день</p>
       </div>
       <TaskCreator></TaskCreator>
       {tasks.map((task: Task) =>
-        task.board === "Мой день" ? (
+        task.board === "myday" ? (
           <TaskComponent
             id={task.id}
             text={task.text}

@@ -14,20 +14,19 @@ function BoardComponent() {
         <p className="text-2xl">{currentBoard}</p>
       </div>
       <TaskCreator></TaskCreator>
-      {tasks.map((task: Task) =>
-        task.board === currentBoard ? (
-          <TaskComponent
-            id={task.id}
-            text={task.text}
-            date={task.date}
-            important={task.important}
-            finished={task.finished}
-            board={task.board}
-            key={task.id}
-          ></TaskComponent>
-        ) : (
-          <></>
-        )
+      {tasks.map(
+        (task: Task) =>
+          task.board === currentBoard && (
+            <TaskComponent
+              id={task.id}
+              text={task.text}
+              date={task.date}
+              important={task.important}
+              finished={task.finished}
+              board={task.board}
+              key={task.id}
+            ></TaskComponent>
+          )
       )}
     </div>
   );

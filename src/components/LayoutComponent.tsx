@@ -11,13 +11,14 @@ import LayoutSiderComponent from "./LayoutSiderComponent";
 import { Context } from "../Context";
 import { useContext } from "react";
 import BoardComponent from "./BoardComponent";
+import OptionsDrawer from "./OptionsDrawer";
 
 function LayoutComponent() {
   const { currentBoard } = useContext(Context);
 
   return (
     <>
-      <Row>
+      <Row className="w-full sticky top-0 z-50">
         <Col span={24}>
           <MainHeader></MainHeader>
         </Col>
@@ -34,7 +35,7 @@ function LayoutComponent() {
           },
         }}
       >
-        <Row className="h-screen">
+        <Row wrap={false} className="h-screen">
           <Col
             xs={0}
             md={5}
@@ -48,6 +49,7 @@ function LayoutComponent() {
             </div>
           </Col>
           <Col flex="auto" className="h-full">
+            <OptionsDrawer></OptionsDrawer>
             <Content className="">
               <Routes>
                 <Route path="/" element={<div>Not empty</div>}></Route>

@@ -1,6 +1,5 @@
-.ant-menu-vertical .ant-menu-item::after,
-.ant-menu-vertical-left .ant-menu-item::after,
-.ant-menu-vertical-right .ant-menu-item::after,
 .ant-menu-inline .ant-menu-item::after {
-  border-left: 3px;
+  border: 3px;
+  border-style: solid;
+  border-color: #2564cf;
 }

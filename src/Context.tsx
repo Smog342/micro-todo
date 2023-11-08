@@ -1,30 +1,39 @@
-import {createContext ,useState} from "react";
+import { createContext, useState } from "react";
 
 export const Context = createContext<any>("Context");
 
 export type Task = {
+  id: number;
+  text: string;
+  date: string;
+  important: boolean;
+  finished: boolean;
+  board: string;
+};
 
-    id: number,
-    text: string,
-    date: string,
-    important: boolean,
-    finished: boolean,
-    board: string
+export const ContextProvider = ({ children }: any) => {
+  const [tasks, setTasks] = useState<Task[]>([]);
 
-}
+  const [boards, setBoards] = useState<string[]>([]);
 
-export const ContextProvider = ({children} : any) => {
+  const [currentBoard, setCurrentBoard] = useState("");
 
-    const [tasks, setTasks] = useState<Task[]>([]);
+  const [optionsOpen, setOptionsOpen] = useState(false);
 
-    const [boards, setBoards] = useState<string[]>([]);
-
-    const [currentBoard, setCurrentBoard] = useState('');
-
-    return(
-        <Context.Provider value={{tasks, setTasks, boards, setBoards, currentBoard, setCurrentBoard}}>
-            {children}
-        </Context.Provider>
-    );
- 
-}
+  return (
+    <Context.Provider
+      value={{
+        tasks,
+        setTasks,
+        boards,
+        setBoards,
+        currentBoard,
+        setCurrentBoard,
+        optionsOpen,
+        setOptionsOpen,
+      }}
+    >
+      {children}
+    </Context.Provider>
+  );
+};
