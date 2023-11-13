@@ -41,11 +41,10 @@ function LayoutComponent() {
             md={5}
             lg={7}
             className="h-full sc-920:min-w-[200px] sc-920:max-w-[200px] 
-            sc-1010:min-w-[290px] sc-1010:max-w-[290px] transition-all duration-100 ease-out"
+            sc-1010:min-w-[290px] sc-1010:max-w-[290px] transition-all duration-100 ease-out bg-white"
           >
             <div className="bg-white shadow-sider-shadow h-full flex flex-col">
               <LayoutSiderComponent></LayoutSiderComponent>
-              <div>Test</div>
             </div>
           </Col>
           <Col flex="auto" className="h-full">
