@@ -1,5 +1,5 @@
-import { Col, ConfigProvider, Layout, Row, Space } from "antd";
-import { Content, Header } from "antd/es/layout/layout";
+import { Col, Row } from "antd";
+import { Content } from "antd/es/layout/layout";
 import { Route, Routes } from "react-router-dom";
 import MainHeader from "./MainHeader";
 import MyDay from "./MyDay";

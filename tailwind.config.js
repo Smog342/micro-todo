@@ -13,6 +13,7 @@ module.exports = {
       screens: {
         "sc-1010": "1010px",
         "sc-920": "920px",
+        "sc-910": { max: "910px" },
       },
       boxShadow: {
         "sider-shadow":

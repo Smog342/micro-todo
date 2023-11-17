@@ -3,3 +3,9 @@
   border-style: solid;
   border-color: #2564cf;
 }
+
+.ant-input::placeholder {
+  color: #2564cf;
+  font-weight: 600;
+  padding-left: 10px;
+}

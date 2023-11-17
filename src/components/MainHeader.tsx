@@ -4,12 +4,14 @@ import {
   HolderOutlined,
   NotificationOutlined,
   QuestionOutlined,
+  SearchOutlined,
   SettingOutlined,
   UserOutlined,
   WindowsOutlined,
 } from "@ant-design/icons";
 import { Context } from "../Context";
 import { useContext } from "react";
+import Icon from "@ant-design/icons/lib/components/Icon";
 
 const { Search } = Input;
 
@@ -30,7 +32,17 @@ function MainHeader() {
       <div className="flex justify-between flex-1">
         <div className="font-semibold ml-[3px]">To Do</div>
         <div className="flex items-center justify-between">
-          <Search className="w-[400px] block"></Search>
+          <Input
+            prefix={
+              <Button type="text" size="small" className="!pl-0">
+                <SearchOutlined
+                  rotate={90}
+                  className="text-header-bg text-xl"
+                />
+              </Button>
+            }
+            className="w-[400px] sc-910:hidden"
+          ></Input>
         </div>
         <div className="flex items-center">
           <Button
