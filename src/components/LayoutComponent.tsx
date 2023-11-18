@@ -37,34 +37,31 @@ function LayoutComponent() {
             <LayoutSiderComponent></LayoutSiderComponent>
           </div>
         </Col>
-        <Col flex="auto" className="h-full">
+        <Col flex="auto" className="">
           <OptionsDrawer></OptionsDrawer>
-          <Content className="">
-            <Routes>
-              <Route path="/" element={<div>Not empty</div>}></Route>
-              <Route path="myday" element={<MyDay></MyDay>}></Route>
-              <Route
-                path="important"
-                element={<ImportantComponent></ImportantComponent>}
-              ></Route>
-              <Route
-                path="schedule"
-                element={<PlannedComponent></PlannedComponent>}
-              ></Route>
-              <Route
-                path="assigned"
-                element={<AssignedComponent></AssignedComponent>}
-              ></Route>
-              <Route
-                path="tasks"
-                element={<TasksListComponent></TasksListComponent>}
-              ></Route>
-              <Route
-                path={currentBoard}
-                element={<BoardComponent></BoardComponent>}
-              ></Route>
-            </Routes>
-          </Content>
+          <Routes>
+            <Route path="myday" element={<MyDay></MyDay>}></Route>
+            <Route
+              path="important"
+              element={<ImportantComponent></ImportantComponent>}
+            ></Route>
+            <Route
+              path="schedule"
+              element={<PlannedComponent></PlannedComponent>}
+            ></Route>
+            <Route
+              path="assigned"
+              element={<AssignedComponent></AssignedComponent>}
+            ></Route>
+            <Route
+              path="tasks"
+              element={<TasksListComponent></TasksListComponent>}
+            ></Route>
+            <Route
+              path={currentBoard}
+              element={<BoardComponent></BoardComponent>}
+            ></Route>
+          </Routes>
         </Col>
       </Row>
     </>

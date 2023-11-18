@@ -1,7 +1,9 @@
-import { StarFilled, StarOutlined } from "@ant-design/icons";
 import { Button, Radio } from "antd";
 import { Task, Context } from "../Context";
 import { useContext, useState } from "react";
+import { ReactComponent as StarIcon } from "../icons/svgexport-22.svg";
+import { ReactComponent as StarFilledIcon } from "../icons/svgexport-23.svg";
+import Icon from "@ant-design/icons/lib/components/Icon";
 
 function TaskComponent(taskProps: Task) {
   const { tasks, setTasks } = useContext(Context);
@@ -33,29 +35,27 @@ function TaskComponent(taskProps: Task) {
   }
 
   return (
-    <div className="mt-2 shadow-sider-shadow w-full bg-white flex flex-col">
-      <div className="flex justify-between items-center">
+    <div className="mt-[8px] mr-[24px] ml-[24px] pl-[16px] pr-[16px] min-h-[52px] shadow-sider-shadow bg-white flex flex-col rounded">
+      <div className="flex items-center min-h-[52px]">
         <div className="flex overflow-hidden">
           <Radio checked={isFinished} onClick={handleRadioClick}></Radio>
+        </div>
+        <div className="pt-[8px] pb-[8px] pl-[14px] pr-[14px] min-h-[52px]">
           <p className="break-words">{taskProps.text}</p>
         </div>
-        <div>
-          <Button type="text" onClick={handleStarClick}>
+        <div className="ml-auto">
+          <Button
+            type="text"
+            className="!p-0 !h-[20px] !w-[20px]"
+            onClick={handleStarClick}
+          >
             {isImportant ? (
-              <StarFilled className="text-xl mr-auto"></StarFilled>
+              <Icon component={StarIcon} className="text-[20px]" />
             ) : (
-              <StarOutlined className="text-xl mr-auto"></StarOutlined>
+              <Icon component={StarFilledIcon} className="text-[20px]" />
             )}
           </Button>
         </div>
-      </div>
-      <div className="flex">
-        <p className="text-sm mt-0 mb-0 ml-0 mr-2">{taskProps.date}</p>
-        {taskProps.board !== "important" || "schedule" || "tasks" ? (
-          <p className="text-sm m-0">{taskProps.board}</p>
-        ) : (
-          <></>
-        )}
       </div>
     </div>
   );

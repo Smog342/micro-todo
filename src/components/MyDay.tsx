@@ -3,28 +3,41 @@ import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
 import { useContext } from "react";
+import { ReactComponent as ArrowsIcon } from "../icons/svgexport-15.svg";
+import { ReactComponent as GroupIcon } from "../icons/svgexport-16.svg";
+import { ReactComponent as LampIcon } from "../icons/svgexport-17.svg";
+import { ReactComponent as BoardIcon } from "../icons/svgexport-7.svg";
+import Icon from "@ant-design/icons/lib/components/Icon";
 
 function MyDay() {
   const { tasks } = useContext(Context);
 
   return (
-    <div className="pl-[24px] pr-[24px] overflow-auto h-full flex flex-col">
-      <div className="flex text-blue-600">
-        <CoffeeOutlined className="text-3xl mr-2"></CoffeeOutlined>
-        <p className="text-2xl">Мой день</p>
+    <div className="h-full overflow-auto bg-white-bg">
+      <div className="flex items-center mr-[24px] ml-[24px] mt-[16px] mb-[16px]">
+        <div className="flex items-center">
+          <Icon component={BoardIcon} className="text-[24px] mr-[8px]" />
+          <p className="text-[1.2rem] font-[600]">Мой день</p>
+        </div>
+        <div className="flex items-center ml-auto">
+          <div className="pt-[2px] pb-[2px] pr-[12px] pl-[12px]">
+            <Icon component={ArrowsIcon} className="text-[20px]" />
+            <span className="ml-[4px]">Сортировка</span>
+          </div>
+          <div className="pt-[2px] pb-[2px] pr-[12px] pl-[12px]">
+            <Icon component={GroupIcon} className="text-[20px]" />
+            <span className="ml-[4px]">Группировать</span>
+          </div>
+          <div className="pt-[2px] pb-[2px] pr-[12px] pl-[12px]">
+            <Icon component={LampIcon} className="text-[20px]" />
+            <span className="ml-[4px]">Предложения</span>
+          </div>
+        </div>
       </div>
       <TaskCreator></TaskCreator>
       {tasks.map((task: Task) =>
         task.board === "myday" ? (
-          <TaskComponent
-            id={task.id}
-            text={task.text}
-            date={task.date}
-            important={task.important}
-            finished={task.finished}
-            board={task.board}
-            key={task.id}
-          ></TaskComponent>
+          <TaskComponent {...task} key={task.id}></TaskComponent>
         ) : (
           <></>
         )

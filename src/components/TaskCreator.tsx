@@ -1,13 +1,11 @@
-import {
-  BellOutlined,
-  CalculatorOutlined,
-  CalendarOutlined,
-  PlusOutlined,
-  RetweetOutlined,
-} from "@ant-design/icons";
-import { Button, DatePicker, Input } from "antd";
+import { Button, ConfigProvider, Input } from "antd";
 import { useContext, useState } from "react";
 import { Task, Context } from "../Context";
+import { ReactComponent as DatePickerIcon } from "../icons/svgexport-19.svg";
+import { ReactComponent as BellIcon } from "../icons/svgexport-20.svg";
+import { ReactComponent as RepeatIcon } from "../icons/svgexport-21.svg";
+import { ReactComponent as CircleIcon } from "../icons/svgexport-18.svg";
+import Icon from "@ant-design/icons/lib/components/Icon";
 
 function TaskCreator() {
   const { tasks, setTasks, currentBoard } = useContext(Context);
@@ -18,7 +16,7 @@ function TaskCreator() {
 
   const [text, setText] = useState("");
 
-  function handleClick(event: React.MouseEvent<HTMLElement>): void {
+  function handleClick() {
     setDatePickerAllowed(!datePickerAllowed);
   }
 
@@ -28,11 +26,60 @@ function TaskCreator() {
   }
 
   return (
-    <div className="pt-2 pb-2">
-      <Input
-        prefix={
+    <div className="rounded-[4px] ml-[24px] mr-[24px] flex flex-col shadow-sider-shadow">
+      <div className="min-h-[52px] pr-[16px] pl-[16px] flex items-center bg-white">
+        <Input
+          prefix={<Icon component={CircleIcon} className="text-[20px]" />}
+          bordered={false}
+          placeholder="Добавить задачу"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+          onPressEnter={(e) => {
+            addTask({
+              id: Math.random() * 1000,
+              text: text,
+              date: date,
+              important: currentBoard === "important" ? true : false,
+              finished: false,
+              board: currentBoard,
+            });
+          }}
+        ></Input>
+      </div>
+      <div className="flex items-center justify-between h-[44px] pr-[16px] pl-[16px] bg-white-bg">
+        <div className="flex gap-[8px] pl-[2px] items-center">
+          <div className="h-[28px] w-[28px]">
+            <Button type="text" className="!p-0 !h-[20px] !w-[20px]">
+              <Icon component={DatePickerIcon} className="text-[20px]" />
+            </Button>
+          </div>
+          <div className="h-[28px] w-[28px]">
+            <Button type="text" className="!p-0 !h-[20px] !w-[20px]">
+              <Icon component={BellIcon} className="text-[20px]" />
+            </Button>
+          </div>
+          <div className="h-[28px] w-[28px]">
+            <Button type="text" className="!p-0 !h-[20px] !w-[20px]">
+              <Icon component={RepeatIcon} className="text-[20px]" />
+            </Button>
+          </div>
+        </div>
+        <ConfigProvider
+          theme={{
+            components: {
+              Button: {
+                colorBgContainerDisabled: "#ffffff",
+                fontWeight: 700,
+                fontSize: 12,
+              },
+            },
+          }}
+        >
           <Button
-            type="text"
+            className="!w-[74px] !p-0 rounded-none"
+            disabled={text.length === 0 ? true : false}
             onClick={(e) => {
               addTask({
                 id: Math.random() * 1000,
@@ -44,32 +91,9 @@ function TaskCreator() {
               });
             }}
           >
-            <PlusOutlined className="text-blue-600 text-xl"></PlusOutlined>
+            Добавить
           </Button>
-        }
-        placeholder="Добавить задачу"
-        allowClear
-        value={text}
-        onChange={(e) => {
-          setText(e.target.value);
-        }}
-      ></Input>
-      <div className="flex">
-        <DatePicker
-          open={datePickerAllowed}
-          onChange={(date, dateString) => {
-            setDate(dateString);
-          }}
-        />
-        <Button type="text" onClick={handleClick}>
-          <CalendarOutlined></CalendarOutlined>
-        </Button>
-        <Button type="text">
-          <BellOutlined></BellOutlined>
-        </Button>
-        <Button type="text">
-          <RetweetOutlined></RetweetOutlined>
-        </Button>
+        </ConfigProvider>
       </div>
     </div>
   );

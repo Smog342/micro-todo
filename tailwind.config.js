@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         "header-bg": "#2564cf",
         "header-hover": "#215aba",
+        "white-bg": "#faf9f8",
       },
       fontFamily: {
         "micro-font": ["Segoe", "'Segoe UI'", "Arial", "sans-serif"],

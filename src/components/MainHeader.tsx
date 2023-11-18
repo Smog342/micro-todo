@@ -47,30 +47,30 @@ function MainHeader() {
         <div className="flex items-center">
           <Button
             type="text"
-            className="bg-inherit hover:bg-header-hover h-full"
+            className="bg-inherit hover:bg-header-hover !h-[48px] !w-[48px]"
             onClick={openOptions}
           >
-            <SettingOutlined className="text-xl text-white"></SettingOutlined>
+            <SettingOutlined className="text-[20px] text-white"></SettingOutlined>
           </Button>
           <Button
             type="text"
-            className="bg-inherit hover:bg-header-hover h-full"
+            className="bg-inherit hover:bg-header-hover !h-[48px] !w-[48px]"
           >
-            <QuestionOutlined className="text-xl text-white"></QuestionOutlined>
+            <QuestionOutlined className="text-[20px] text-white"></QuestionOutlined>
           </Button>
           <Button
             type="text"
-            className="bg-inherit hover:bg-header-hover h-full"
+            className="bg-inherit hover:bg-header-hover !h-[48px] !w-[48px]"
           >
             <Badge count={5} size="small">
-              <NotificationOutlined className="text-xl text-white"></NotificationOutlined>
+              <NotificationOutlined className="text-[20px] text-white"></NotificationOutlined>
             </Badge>
           </Button>
         </div>
       </div>
       <Button
         type="text"
-        className="h-full bg-inherit hover:bg-header-hover pr-[2px]"
+        className="h-full bg-inherit hover:bg-header-hover !p-1"
       >
         <Avatar className="">
           <UserOutlined className="text-xl text-white"></UserOutlined>
