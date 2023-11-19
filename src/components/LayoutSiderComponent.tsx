@@ -21,7 +21,8 @@ import Icon from "@ant-design/icons/lib/components/Icon";
 function LayoutSiderComponent() {
   const navigate = useNavigate();
 
-  const { boards, setBoards, setCurrentBoard } = useContext(Context);
+  const { boards, setBoards, setCurrentBoard, setmenuButtonIsClicked } =
+    useContext(Context);
 
   const [isBoardsDisabled, setIsBoardsDisabled] = useState(
     boards.length === 0 ? true : false
@@ -60,7 +61,14 @@ function LayoutSiderComponent() {
   return (
     <div className="bg-white h-full overflow-auto flex flex-col">
       <div className="mt-[16px] h-[48px] flex items-center pl-[24px] pr-[24px]">
-        <Button type="text" className="!p-0 !h-[20px] !w-[20px]">
+        <Button
+          type="text"
+          className="!p-0 !h-[20px] !w-[20px]"
+          onClick={(__) => {
+            document.getElementById("menu-col")?.classList.add("hidden");
+            setmenuButtonIsClicked(true);
+          }}
+        >
           <Icon component={MenuIcon} className="text-[20px]" />
         </Button>
       </div>

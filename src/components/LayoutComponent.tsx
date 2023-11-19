@@ -27,6 +27,7 @@ function LayoutComponent() {
       </Row>
       <Row wrap={false} className="h-screen">
         <Col
+          id="menu-col"
           flex={
             windowWidth > 1010 ? "290px" : windowWidth > 920 ? "200px" : "0px"
           }

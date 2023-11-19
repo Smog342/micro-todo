@@ -2,20 +2,36 @@ import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
 import { useContext } from "react";
+import { ReactComponent as MenuIcon } from "../icons/svgexport-1.svg";
 import { ReactComponent as ArrowsIcon } from "../icons/svgexport-15.svg";
 import { ReactComponent as GroupIcon } from "../icons/svgexport-16.svg";
 import { ReactComponent as LampIcon } from "../icons/svgexport-17.svg";
 import { ReactComponent as BoardIcon } from "../icons/svgexport-7.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
+import { Button } from "antd";
 
 function PlannedComponent() {
-  const { tasks } = useContext(Context);
+  const { tasks, menuButtonIsClicked, setmenuButtonIsClicked } =
+    useContext(Context);
 
   return (
     <div className="overflow-auto h-full bg-white-bg">
       <div className="flex items-center mr-[24px] ml-[24px] mt-[16px] mb-[16px]">
         <div className="flex items-center">
-          <Icon component={BoardIcon} className="text-[24px] mr-[8px]" />
+          {menuButtonIsClicked ? (
+            <Button
+              type="text"
+              className="!h-[20px] !w-[20px] !p-0 mr-[8px]"
+              onClick={(__) => {
+                document.getElementById("menu-col")?.classList.remove("hidden");
+                setmenuButtonIsClicked(false);
+              }}
+            >
+              <Icon component={MenuIcon} className="text-[20px]" />
+            </Button>
+          ) : (
+            <Icon component={BoardIcon} className="text-[24px] mr-[8px]" />
+          )}
           <p className="text-[1.2rem] font-[600]">Запланировано</p>
         </div>
         <div className="flex items-center ml-auto">

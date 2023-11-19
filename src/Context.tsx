@@ -20,6 +20,8 @@ export const ContextProvider = ({ children }: any) => {
 
   const [optionsOpen, setOptionsOpen] = useState(false);
 
+  const [menuButtonIsClicked, setmenuButtonIsClicked] = useState(false);
+
   return (
     <Context.Provider
       value={{
@@ -31,6 +33,8 @@ export const ContextProvider = ({ children }: any) => {
         setCurrentBoard,
         optionsOpen,
         setOptionsOpen,
+        menuButtonIsClicked,
+        setmenuButtonIsClicked,
       }}
     >
       {children}

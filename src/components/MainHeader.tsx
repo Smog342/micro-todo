@@ -27,19 +27,45 @@ function MainHeader() {
         </Button>
       </div>
       <div className="flex justify-between flex-1">
-        <div className="font-semibold ml-[3px]">To Do</div>
-        <div className="flex items-center justify-between">
-          <Input
-            prefix={
-              <Button type="text" size="small" className="!pl-0">
-                <SearchOutlined
-                  rotate={90}
-                  className="text-header-bg text-xl"
-                />
-              </Button>
-            }
-            className="w-[400px] sc-910:hidden"
-          ></Input>
+        <div className="font-semibold pl-[8px] pr-[12px]">To Do</div>
+        <div className="flex grow items-center justify-between">
+          <div
+            id="header-normal-input"
+            className="w-[400px] ml-auto mr-auto sc-910:hidden"
+          >
+            <Input
+              prefix={
+                <Button type="text" size="small" className="!pl-0">
+                  <SearchOutlined
+                    rotate={90}
+                    className="text-header-bg text-xl"
+                  />
+                </Button>
+              }
+            ></Input>
+          </div>
+          <div id="header-full-input" className="w-[32px] sc-910-min:hidden">
+            <Input
+              prefix={
+                <Button
+                  type="text"
+                  size="small"
+                  className="!p-0"
+                  onClick={(__) => {
+                    document
+                      .getElementById("header-full-input")
+                      ?.classList.replace("w-[32px]", "w-full");
+                  }}
+                >
+                  <SearchOutlined
+                    rotate={90}
+                    className="text-header-bg text-xl"
+                  />
+                </Button>
+              }
+              className="!pl-[5px]"
+            />
+          </div>
         </div>
         <div className="flex items-center">
           <Button
