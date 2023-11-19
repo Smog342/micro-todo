@@ -1,4 +1,3 @@
-import { HomeOutlined } from "@ant-design/icons";
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
@@ -34,9 +33,9 @@ function TasksListComponent() {
           </div>
         </div>
       </div>
-      <TaskCreator></TaskCreator>
+      <TaskCreator />
       {tasks.map((task: Task) => (
-        <TaskComponent {...task} key={task.id}></TaskComponent>
+        <TaskComponent {...task} key={task.id} />
       ))}
     </div>
   );

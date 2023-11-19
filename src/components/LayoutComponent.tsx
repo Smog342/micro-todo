@@ -1,5 +1,4 @@
 import { Col, Row } from "antd";
-import { Content } from "antd/es/layout/layout";
 import { Route, Routes } from "react-router-dom";
 import MainHeader from "./MainHeader";
 import MyDay from "./MyDay";
@@ -23,7 +22,7 @@ function LayoutComponent() {
     <>
       <Row className="w-full sticky top-0 z-50">
         <Col span={24}>
-          <MainHeader></MainHeader>
+          <MainHeader />
         </Col>
       </Row>
       <Row wrap={false} className="h-screen">
@@ -34,33 +33,19 @@ function LayoutComponent() {
           className="h-full transition-all duration-100 ease-out bg-white"
         >
           <div className="bg-white shadow-sider-shadow h-full flex flex-col">
-            <LayoutSiderComponent></LayoutSiderComponent>
+            <LayoutSiderComponent />
           </div>
         </Col>
         <Col flex="auto" className="">
-          <OptionsDrawer></OptionsDrawer>
+          <OptionsDrawer />
           <Routes>
-            <Route path="myday" element={<MyDay></MyDay>}></Route>
-            <Route
-              path="important"
-              element={<ImportantComponent></ImportantComponent>}
-            ></Route>
-            <Route
-              path="schedule"
-              element={<PlannedComponent></PlannedComponent>}
-            ></Route>
-            <Route
-              path="assigned"
-              element={<AssignedComponent></AssignedComponent>}
-            ></Route>
-            <Route
-              path="tasks"
-              element={<TasksListComponent></TasksListComponent>}
-            ></Route>
-            <Route
-              path={currentBoard}
-              element={<BoardComponent></BoardComponent>}
-            ></Route>
+            <Route path="/" element={<></>} />
+            <Route path="myday" element={<MyDay />} />
+            <Route path="important" element={<ImportantComponent />} />
+            <Route path="schedule" element={<PlannedComponent />} />
+            <Route path="assigned" element={<AssignedComponent />} />
+            <Route path="tasks" element={<TasksListComponent />} />
+            <Route path={currentBoard} element={<BoardComponent />} />
           </Routes>
         </Col>
       </Row>

@@ -1,4 +1,3 @@
-import { ScheduleOutlined } from "@ant-design/icons";
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
@@ -34,13 +33,10 @@ function PlannedComponent() {
           </div>
         </div>
       </div>
-      <TaskCreator></TaskCreator>
-      {tasks.map((task: Task) =>
-        task.date !== "" ? (
-          <TaskComponent {...task} key={task.id}></TaskComponent>
-        ) : (
-          <></>
-        )
+      <TaskCreator />
+      {tasks.map(
+        (task: Task) =>
+          task.date !== "" && <TaskComponent {...task} key={task.id} />
       )}
     </div>
   );

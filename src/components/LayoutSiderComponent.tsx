@@ -1,13 +1,4 @@
-import {
-  CheckOutlined,
-  CoffeeOutlined,
-  HomeOutlined,
-  PlusOutlined,
-  ScheduleOutlined,
-  StarOutlined,
-  UnorderedListOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
+import { CheckOutlined } from "@ant-design/icons";
 import { ReactComponent as MenuIcon } from "../icons/svgexport-1.svg";
 import { ReactComponent as SunIcon } from "../icons/svgexport-2.svg";
 import { ReactComponent as StarIcon } from "../icons/svgexport-3.svg";

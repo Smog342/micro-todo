@@ -1,7 +1,5 @@
 import { Avatar, Badge, Button, Input } from "antd";
-import { Header } from "antd/es/layout/layout";
 import {
-  HolderOutlined,
   NotificationOutlined,
   QuestionOutlined,
   SearchOutlined,
@@ -11,7 +9,6 @@ import {
 } from "@ant-design/icons";
 import { Context } from "../Context";
 import { useContext } from "react";
-import Icon from "@ant-design/icons/lib/components/Icon";
 
 const { Search } = Input;
 

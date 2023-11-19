@@ -12,7 +12,7 @@ function TaskComponent(taskProps: Task) {
 
   const [isFinished, setIsFinished] = useState(taskProps.finished);
 
-  function handleStarClick(e: React.MouseEvent<HTMLElement>): void {
+  function handleStarClick() {
     setIsImportant(!isImportant);
     setTasks([
       ...tasks.map((task: { id: number; important: boolean }) =>
@@ -23,7 +23,7 @@ function TaskComponent(taskProps: Task) {
     ]);
   }
 
-  function handleRadioClick(e: React.MouseEvent<HTMLElement>): void {
+  function handleRadioClick() {
     setIsFinished(!isFinished);
     setTasks([
       ...tasks.map((task: { id: number; finished: boolean }) =>

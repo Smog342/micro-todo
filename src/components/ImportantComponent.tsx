@@ -1,4 +1,3 @@
-import { StarOutlined } from "@ant-design/icons";
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
@@ -34,21 +33,10 @@ function ImportantComponent() {
           </div>
         </div>
       </div>
-      <TaskCreator></TaskCreator>
-      {tasks.map((task: Task) =>
-        task.important === true ? (
-          <TaskComponent
-            id={task.id}
-            text={task.text}
-            date={task.date}
-            important={task.important}
-            finished={task.finished}
-            board={task.board}
-            key={task.id}
-          ></TaskComponent>
-        ) : (
-          <></>
-        )
+      <TaskCreator />
+      {tasks.map(
+        (task: Task) =>
+          task.important === true && <TaskComponent {...task} key={task.id} />
       )}
     </div>
   );

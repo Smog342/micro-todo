@@ -20,7 +20,7 @@ function TaskCreator() {
     setDatePickerAllowed(!datePickerAllowed);
   }
 
-  function addTask(task: Task): void {
+  function addTask(task: Task) {
     setTasks([...tasks, task]);
     setText("");
   }

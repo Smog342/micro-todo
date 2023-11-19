@@ -1,4 +1,3 @@
-import { UnorderedListOutlined } from "@ant-design/icons";
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
@@ -34,11 +33,11 @@ function BoardComponent() {
           </div>
         </div>
       </div>
-      <TaskCreator></TaskCreator>
+      <TaskCreator />
       {tasks.map(
         (task: Task) =>
           task.board === currentBoard && (
-            <TaskComponent {...task} key={task.id}></TaskComponent>
+            <TaskComponent {...task} key={task.id} />
           )
       )}
     </div>

@@ -1,4 +1,3 @@
-import { CoffeeOutlined } from "@ant-design/icons";
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
 import { Task, Context } from "../Context";
@@ -35,12 +34,11 @@ function MyDay() {
         </div>
       </div>
       <TaskCreator></TaskCreator>
-      {tasks.map((task: Task) =>
-        task.board === "myday" ? (
-          <TaskComponent {...task} key={task.id}></TaskComponent>
-        ) : (
-          <></>
-        )
+      {tasks.map(
+        (task: Task) =>
+          task.board === "myday" && (
+            <TaskComponent {...task} key={task.id}></TaskComponent>
+          )
       )}
     </div>
   );
