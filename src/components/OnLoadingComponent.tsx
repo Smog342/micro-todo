@@ -1,14 +1,9 @@
 import { Spin } from "antd";
-
-type LoadingProps = {
-  isAppLoading: boolean;
-  props: string;
-};
+import { LoadingProps } from "../types";
 
 function OnLoadingComponent(Component: React.FC) {
   return function LoadingComponent({
     isAppLoading,
-    props,
   }: LoadingProps): JSX.Element {
     if (isAppLoading) {
       return (

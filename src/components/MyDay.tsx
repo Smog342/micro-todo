@@ -9,10 +9,12 @@ import { ReactComponent as LampIcon } from "../icons/svgexport-17.svg";
 import { ReactComponent as BoardIcon } from "../icons/svgexport-7.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { Button } from "antd";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 function MyDay() {
-  const { tasks, menuButtonIsClicked, setmenuButtonIsClicked } =
-    useContext(Context);
+  const { menuButtonIsClicked, setmenuButtonIsClicked } = useContext(Context);
+
+  const { tasks } = useTypedSelector((state) => state.tasks);
 
   return (
     <div className="h-full overflow-auto bg-white-bg">

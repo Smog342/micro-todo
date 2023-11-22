@@ -1,14 +1,18 @@
 import { Button, ConfigProvider, Input } from "antd";
 import { useContext, useState } from "react";
-import { Task, Context } from "../Context";
+import { Context } from "../Context";
+import { Task } from "../types";
 import { ReactComponent as DatePickerIcon } from "../icons/svgexport-19.svg";
 import { ReactComponent as BellIcon } from "../icons/svgexport-20.svg";
 import { ReactComponent as RepeatIcon } from "../icons/svgexport-21.svg";
 import { ReactComponent as CircleIcon } from "../icons/svgexport-18.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
+import { useDispatch } from "react-redux";
 
 function TaskCreator() {
-  const { tasks, setTasks, currentBoard } = useContext(Context);
+  const { currentBoard } = useContext(Context);
+
+  const dispatch = useDispatch();
 
   const [datePickerAllowed, setDatePickerAllowed] = useState(false);
 
@@ -21,7 +25,7 @@ function TaskCreator() {
   }
 
   function addTask(task: Task) {
-    setTasks([...tasks, task]);
+    dispatch({ type: "ADD_TASK", payload: task });
     setText("");
   }
 

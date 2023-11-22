@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { ReactComponent as StarIcon } from "../icons/svgexport-22.svg";
 import { ReactComponent as StarFilledIcon } from "../icons/svgexport-23.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
+import { useDispatch } from "react-redux";
 
 function TaskComponent(taskProps: Task) {
   const { tasks, setTasks } = useContext(Context);
@@ -12,26 +13,16 @@ function TaskComponent(taskProps: Task) {
 
   const [isFinished, setIsFinished] = useState(taskProps.finished);
 
+  const dispatch = useDispatch();
+
   function handleStarClick() {
     setIsImportant(!isImportant);
-    setTasks([
-      ...tasks.map((task: { id: number; important: boolean }) =>
-        task.id === taskProps.id
-          ? { ...task, important: !task.important }
-          : { ...task }
-      ),
-    ]);
+    dispatch({ type: "SET_TASK_AS_IMPORTANT", payload: taskProps.id });
   }
 
   function handleRadioClick() {
     setIsFinished(!isFinished);
-    setTasks([
-      ...tasks.map((task: { id: number; finished: boolean }) =>
-        task.id === taskProps.id
-          ? { ...task, finished: !task.finished }
-          : { ...task }
-      ),
-    ]);
+    dispatch({ type: "SET_TASK_AS_FINISHED", payload: taskProps.id });
   }
 
   return (

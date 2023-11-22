@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import logo from "./logo.svg";
+import { useState } from "react";
 import "./App.css";
-import { Button } from "antd";
 import OnLoadingComponent from "./components/OnLoadingComponent";
-import Task from "./components/TaskComponent";
 import LayoutComponent from "./components/LayoutComponent";
+import store from "./store/store";
+import { Provider } from "react-redux";
 
 function App() {
   const [appLoading, setAppLoading] = useState(true);
@@ -15,7 +14,11 @@ function App() {
     setAppLoading(false);
   }, 5000);
 
-  return <Loader isAppLoading={appLoading} props={""}></Loader>;
+  return (
+    <Provider store={store}>
+      <Loader isAppLoading={appLoading}></Loader>
+    </Provider>
+  );
 }
 
 export default App;
