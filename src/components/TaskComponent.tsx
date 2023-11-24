@@ -5,6 +5,10 @@ import { ReactComponent as StarIcon } from "../icons/svgexport-22.svg";
 import { ReactComponent as StarFilledIcon } from "../icons/svgexport-23.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { useDispatch } from "react-redux";
+import {
+  setTaskAsImportant,
+  setTaskAsFinished,
+} from "../store/reducers/tasksSlice";
 
 function TaskComponent(taskProps: Task) {
   const { tasks, setTasks } = useContext(Context);
@@ -17,12 +21,12 @@ function TaskComponent(taskProps: Task) {
 
   function handleStarClick() {
     setIsImportant(!isImportant);
-    dispatch({ type: "SET_TASK_AS_IMPORTANT", payload: taskProps.id });
+    dispatch(setTaskAsImportant(taskProps.id));
   }
 
   function handleRadioClick() {
     setIsFinished(!isFinished);
-    dispatch({ type: "SET_TASK_AS_FINISHED", payload: taskProps.id });
+    dispatch(setTaskAsFinished(taskProps.id));
   }
 
   return (

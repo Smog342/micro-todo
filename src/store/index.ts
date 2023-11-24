@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
-import { tasksReducer } from "./reducers/tasksReducer";
+import { combineReducers } from "@reduxjs/toolkit";
+import tasksReducer from "./reducers/tasksSlice";
 
 export const rootReducer = combineReducers({
   tasks: tasksReducer,

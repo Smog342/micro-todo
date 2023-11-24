@@ -8,6 +8,7 @@ import { ReactComponent as RepeatIcon } from "../icons/svgexport-21.svg";
 import { ReactComponent as CircleIcon } from "../icons/svgexport-18.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { useDispatch } from "react-redux";
+import { addTask } from "../store/reducers/tasksSlice";
 
 function TaskCreator() {
   const { currentBoard } = useContext(Context);
@@ -24,8 +25,8 @@ function TaskCreator() {
     setDatePickerAllowed(!datePickerAllowed);
   }
 
-  function addTask(task: Task) {
-    dispatch({ type: "ADD_TASK", payload: task });
+  function addTaskLocal(task: Task) {
+    dispatch(addTask(task));
     setText("");
   }
 
@@ -41,7 +42,7 @@ function TaskCreator() {
             setText(e.target.value);
           }}
           onPressEnter={(e) => {
-            addTask({
+            addTaskLocal({
               id: Math.random() * 1000,
               text: text,
               date: date,
