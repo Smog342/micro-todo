@@ -14,19 +14,18 @@ import { ReactComponent as BottomThirdIcon } from "../icons/svgexport-12.svg";
 import { ReactComponent as BottomFourthIcon } from "../icons/svgexport-13.svg";
 import { Menu, Input, Button, ConfigProvider } from "antd";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { Context } from "../Context";
+import { useState } from "react";
 import Icon from "@ant-design/icons/lib/components/Icon";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { addBoard } from "../store/reducers/boardsSlice";
+import { setCurrentBoard } from "../store/reducers/currentBoardSlice";
+import { switchMenuButton } from "../store/reducers/menuButtonSlice";
 
 function LayoutSiderComponent() {
   const navigate = useNavigate();
-
-  const { boards, setBoards, setCurrentBoard, setmenuButtonIsClicked } =
-    useContext(Context);
-
-  const [isBoardsDisabled, setIsBoardsDisabled] = useState(
-    boards.length === 0 ? true : false
-  );
+  const dispatch = useDispatch();
+  const { boards } = useTypedSelector((state) => state.boards);
 
   const [boardTitle, setBoardTitle] = useState("");
 
@@ -52,10 +51,9 @@ function LayoutSiderComponent() {
     })),
   ];
 
-  function handlePlusClick(e: React.MouseEvent<HTMLElement>): void {
-    setBoards([...boards, boardTitle]);
+  function handleBoardAddition() {
+    dispatch(addBoard(boardTitle));
     setBoardTitle("");
-    setIsBoardsDisabled(false);
   }
 
   return (
@@ -66,7 +64,7 @@ function LayoutSiderComponent() {
           className="!p-0 !h-[20px] !w-[20px]"
           onClick={(__) => {
             document.getElementById("menu-col")?.classList.add("hidden");
-            setmenuButtonIsClicked(true);
+            dispatch(switchMenuButton());
           }}
         >
           <Icon component={MenuIcon} className="text-[20px]" />
@@ -94,7 +92,7 @@ function LayoutSiderComponent() {
           mode="inline"
           className=""
           onClick={({ key }) => {
-            setCurrentBoard(key);
+            dispatch(setCurrentBoard(key));
             navigate(key);
           }}
         ></Menu>
@@ -109,7 +107,7 @@ function LayoutSiderComponent() {
             <Button
               type="text"
               className="!h-[20px] !w-[20px] !p-0"
-              onClick={handlePlusClick}
+              onClick={handleBoardAddition}
             >
               <Icon component={PlusIcon} className="text-[20px]" />
             </Button>
@@ -124,6 +122,9 @@ function LayoutSiderComponent() {
           bordered={false}
           value={boardTitle}
           onChange={(e) => setBoardTitle(e.target.value)}
+          onPressEnter={(e) => {
+            handleBoardAddition();
+          }}
         ></Input>
       </ConfigProvider>
       <div className="flex justify-around mt-auto">

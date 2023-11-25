@@ -1,13 +1,11 @@
 import { Drawer, Switch } from "antd";
-import { Context } from "../Context";
-import { useContext } from "react";
+import { switchOptionsOpen } from "../store/reducers/optionsSlice";
+import { useDispatch } from "react-redux";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 function OptionsDrawer() {
-  const { optionsOpen, setOptionsOpen } = useContext(Context);
-
-  function closeOptions() {
-    setOptionsOpen(!optionsOpen);
-  }
+  const { optionsOpen } = useTypedSelector((state) => state.options);
+  const dispatch = useDispatch();
 
   return (
     <Drawer
@@ -16,7 +14,9 @@ function OptionsDrawer() {
       getContainer={false}
       width={352}
       open={optionsOpen}
-      onClose={closeOptions}
+      onClose={(e) => {
+        dispatch(switchOptionsOpen());
+      }}
     >
       <h4>Общие</h4>
       <h5>Запрашивать подтверждение перед удалением</h5>

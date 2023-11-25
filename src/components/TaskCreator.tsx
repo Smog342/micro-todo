@@ -1,6 +1,5 @@
 import { Button, ConfigProvider, Input } from "antd";
-import { useContext, useState } from "react";
-import { Context } from "../Context";
+import { useState } from "react";
 import { Task } from "../types";
 import { ReactComponent as DatePickerIcon } from "../icons/svgexport-19.svg";
 import { ReactComponent as BellIcon } from "../icons/svgexport-20.svg";
@@ -9,9 +8,10 @@ import { ReactComponent as CircleIcon } from "../icons/svgexport-18.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { useDispatch } from "react-redux";
 import { addTask } from "../store/reducers/tasksSlice";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 function TaskCreator() {
-  const { currentBoard } = useContext(Context);
+  const { currentBoard } = useTypedSelector((state) => state.currentBoard);
 
   const dispatch = useDispatch();
 

@@ -7,16 +7,14 @@ import {
   UserOutlined,
   WindowsOutlined,
 } from "@ant-design/icons";
-import { Context } from "../Context";
-import { useContext } from "react";
-
-const { Search } = Input;
+import { switchOptionsOpen } from "../store/reducers/optionsSlice";
+import { useDispatch } from "react-redux";
 
 function MainHeader() {
-  const { optionsOpen, setOptionsOpen } = useContext(Context);
+  const dispatch = useDispatch();
 
   function openOptions() {
-    setOptionsOpen(!optionsOpen);
+    dispatch(switchOptionsOpen());
   }
 
   return (

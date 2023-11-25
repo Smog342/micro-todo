@@ -7,14 +7,13 @@ import PlannedComponent from "./PlannedComponent";
 import AssignedComponent from "./AssignedComponent";
 import TasksListComponent from "./TasksListComponent";
 import LayoutSiderComponent from "./LayoutSiderComponent";
-import { Context } from "../Context";
-import { useContext } from "react";
 import BoardComponent from "./BoardComponent";
 import OptionsDrawer from "./OptionsDrawer";
 import useWindowSize from "../hooks/useWindowSize";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 function LayoutComponent() {
-  const { currentBoard } = useContext(Context);
+  const { currentBoard } = useTypedSelector((state) => state.currentBoard);
 
   const windowWidth = useWindowSize();
 
@@ -40,7 +39,7 @@ function LayoutComponent() {
         <Col flex="auto" className="">
           <OptionsDrawer />
           <Routes>
-            <Route path="/" element={<></>} />
+            <Route path="/" element={<MyDay />} />
             <Route path="myday" element={<MyDay />} />
             <Route path="important" element={<ImportantComponent />} />
             <Route path="schedule" element={<PlannedComponent />} />

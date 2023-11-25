@@ -1,6 +1,6 @@
 import { Button, Radio } from "antd";
-import { Task, Context } from "../Context";
-import { useContext, useState } from "react";
+import { Task } from "../types";
+import { useState } from "react";
 import { ReactComponent as StarIcon } from "../icons/svgexport-22.svg";
 import { ReactComponent as StarFilledIcon } from "../icons/svgexport-23.svg";
 import Icon from "@ant-design/icons/lib/components/Icon";
@@ -11,8 +11,6 @@ import {
 } from "../store/reducers/tasksSlice";
 
 function TaskComponent(taskProps: Task) {
-  const { tasks, setTasks } = useContext(Context);
-
   const [isImportant, setIsImportant] = useState(taskProps.important);
 
   const [isFinished, setIsFinished] = useState(taskProps.finished);

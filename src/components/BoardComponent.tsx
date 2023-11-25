@@ -1,7 +1,6 @@
 import TaskComponent from "./TaskComponent";
 import TaskCreator from "./TaskCreator";
-import { Task, Context } from "../Context";
-import { useContext } from "react";
+import { Task } from "../types";
 import Icon from "@ant-design/icons/lib/components/Icon";
 import { ReactComponent as MenuIcon } from "../icons/svgexport-1.svg";
 import { ReactComponent as ArrowsIcon } from "../icons/svgexport-15.svg";
@@ -9,22 +8,27 @@ import { ReactComponent as GroupIcon } from "../icons/svgexport-16.svg";
 import { ReactComponent as LampIcon } from "../icons/svgexport-17.svg";
 import { ReactComponent as BoardIcon } from "../icons/svgexport-7.svg";
 import { Button } from "antd";
+import { useTypedSelector } from "../hooks/useTypedSelector";
+import { switchMenuButton } from "../store/reducers/menuButtonSlice";
+import { useDispatch } from "react-redux";
 
 function BoardComponent() {
-  const { tasks, currentBoard, menuButtonIsClicked, setmenuButtonIsClicked } =
-    useContext(Context);
+  const { currentBoard } = useTypedSelector((state) => state.currentBoard);
+  const { tasks } = useTypedSelector((state) => state.tasks);
+  const { isMenuBtnClicked } = useTypedSelector((state) => state.menuButton);
+  const dispatch = useDispatch();
 
   return (
     <div className="h-full overflow-auto bg-white-bg">
       <div className="flex items-center mr-[24px] ml-[24px] mt-[16px] mb-[16px]">
         <div className="flex items-center">
-          {menuButtonIsClicked ? (
+          {isMenuBtnClicked ? (
             <Button
               type="text"
               className="!h-[20px] !w-[20px] !p-0 mr-[8px]"
               onClick={(__) => {
                 document.getElementById("menu-col")?.classList.remove("hidden");
-                setmenuButtonIsClicked(false);
+                dispatch(switchMenuButton());
               }}
             >
               <Icon component={MenuIcon} className="text-[20px]" />

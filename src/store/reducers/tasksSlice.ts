@@ -30,6 +30,16 @@ const tasksSlice = createSlice({
           : { ...task }
       );
     },
+    deleteTask(state, action: PayloadAction<number>) {
+      state.tasks = state.tasks.filter((task) => task.id !== action.payload);
+    },
+    changeTask(state, action: PayloadAction<{ id: number; text: string }>) {
+      state.tasks = state.tasks.map((task) =>
+        task.id === action.payload.id
+          ? { ...task, text: action.payload.text }
+          : { ...task }
+      );
+    },
   },
 });
 
