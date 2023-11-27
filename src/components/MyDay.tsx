@@ -11,6 +11,7 @@ import { Button } from "antd";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { switchMenuButton } from "../store/reducers/menuButtonSlice";
 import { useDispatch } from "react-redux";
+import TaskContextMenu from "./TaskContextMenu";
 
 function MyDay() {
   const { isMenuBtnClicked } = useTypedSelector((state) => state.menuButton);
@@ -58,7 +59,7 @@ function MyDay() {
       {tasks.map(
         (task: Task) =>
           task.board === "myday" && (
-            <TaskComponent {...task} key={task.id}></TaskComponent>
+            <TaskContextMenu {...task} key={task.id}></TaskContextMenu>
           )
       )}
     </div>

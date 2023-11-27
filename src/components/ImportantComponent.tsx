@@ -11,6 +11,7 @@ import { Button } from "antd";
 import { switchMenuButton } from "../store/reducers/menuButtonSlice";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useDispatch } from "react-redux";
+import TaskContextMenu from "./TaskContextMenu";
 
 function ImportantComponent() {
   const { tasks } = useTypedSelector((state) => state.tasks);
@@ -55,7 +56,9 @@ function ImportantComponent() {
       <TaskCreator />
       {tasks.map(
         (task: Task) =>
-          task.important === true && <TaskComponent {...task} key={task.id} />
+          task.important === true && (
+            <TaskContextMenu {...task} key={task.id}></TaskContextMenu>
+          )
       )}
     </div>
   );

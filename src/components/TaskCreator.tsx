@@ -86,7 +86,7 @@ function TaskCreator() {
             className="!w-[74px] !p-0 rounded-none"
             disabled={text.length === 0 ? true : false}
             onClick={(e) => {
-              addTask({
+              addTaskLocal({
                 id: Math.random() * 1000,
                 text: text,
                 date: date,

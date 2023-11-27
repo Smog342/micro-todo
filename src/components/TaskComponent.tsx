@@ -9,6 +9,7 @@ import {
   setTaskAsImportant,
   setTaskAsFinished,
 } from "../store/reducers/tasksSlice";
+import { setCurrentTask } from "../store/reducers/currentTaskSlice";
 
 function TaskComponent(taskProps: Task) {
   const [isImportant, setIsImportant] = useState(taskProps.important);
@@ -28,7 +29,12 @@ function TaskComponent(taskProps: Task) {
   }
 
   return (
-    <div className="mt-[8px] mr-[24px] ml-[24px] pl-[16px] pr-[16px] min-h-[52px] shadow-sider-shadow bg-white flex flex-col rounded">
+    <div
+      onContextMenu={(e) => {
+        dispatch(setCurrentTask(taskProps));
+      }}
+      className="mt-[8px] mr-[24px] ml-[24px] pl-[16px] pr-[16px] min-h-[52px] shadow-sider-shadow bg-white flex flex-col rounded"
+    >
       <div className="flex items-center min-h-[52px]">
         <div className="flex overflow-hidden">
           <Radio checked={isFinished} onClick={handleRadioClick}></Radio>

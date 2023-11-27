@@ -11,6 +11,7 @@ import { Button } from "antd";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { switchMenuButton } from "../store/reducers/menuButtonSlice";
 import { useDispatch } from "react-redux";
+import TaskContextMenu from "./TaskContextMenu";
 
 function BoardComponent() {
   const { currentBoard } = useTypedSelector((state) => state.currentBoard);
@@ -57,7 +58,7 @@ function BoardComponent() {
       {tasks.map(
         (task: Task) =>
           task.board === currentBoard && (
-            <TaskComponent {...task} key={task.id} />
+            <TaskContextMenu {...task} key={task.id}></TaskContextMenu>
           )
       )}
     </div>
