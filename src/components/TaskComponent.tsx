@@ -9,7 +9,8 @@ import {
   setTaskAsImportant,
   setTaskAsFinished,
 } from "../store/reducers/tasksSlice";
-import { setCurrentTask } from "../store/reducers/currentTaskSlice";
+import { setCurrentTaskRightClick } from "../store/reducers/currentTaskRightClickSlice";
+import { setCurrentTaskLeftClick } from "../store/reducers/currentTaskLeftClickSlice";
 
 function TaskComponent(taskProps: Task) {
   const [isImportant, setIsImportant] = useState(taskProps.important);
@@ -31,7 +32,7 @@ function TaskComponent(taskProps: Task) {
   return (
     <div
       onContextMenu={(e) => {
-        dispatch(setCurrentTask(taskProps));
+        dispatch(setCurrentTaskRightClick(taskProps));
       }}
       className="mt-[8px] mr-[24px] ml-[24px] pl-[16px] pr-[16px] min-h-[52px] shadow-sider-shadow bg-white flex flex-col rounded"
     >
@@ -39,7 +40,12 @@ function TaskComponent(taskProps: Task) {
         <div className="flex overflow-hidden">
           <Radio checked={isFinished} onClick={handleRadioClick}></Radio>
         </div>
-        <div className="pt-[8px] pb-[8px] pl-[14px] pr-[14px] min-h-[52px]">
+        <div
+          className="pt-[8px] pb-[8px] pl-[14px] pr-[14px] min-h-[52px] grow"
+          onClick={(e) => {
+            dispatch(setCurrentTaskLeftClick(taskProps));
+          }}
+        >
           <p className="break-words">{taskProps.text}</p>
         </div>
         <div className="ml-auto">

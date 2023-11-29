@@ -18,7 +18,9 @@ let items = [
 
 export default function (taskProps: Task) {
   const dispatch = useDispatch();
-  const { currentTask } = useTypedSelector((state) => state.currentTask);
+  const { currentTask } = useTypedSelector(
+    (state) => state.currentTaskRightClick
+  );
 
   const onClick: MenuProps["onClick"] = ({ key }) => {
     if (key === "delete_task") {

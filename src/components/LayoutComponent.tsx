@@ -11,9 +11,13 @@ import BoardComponent from "./BoardComponent";
 import OptionsDrawer from "./OptionsDrawer";
 import useWindowSize from "../hooks/useWindowSize";
 import { useTypedSelector } from "../hooks/useTypedSelector";
+import TaskSiderComponent from "./TaskSiderComponent";
 
 function LayoutComponent() {
   const { currentBoard } = useTypedSelector((state) => state.currentBoard);
+  const { currentTask } = useTypedSelector(
+    (state) => state.currentTaskLeftClick
+  );
 
   const windowWidth = useWindowSize();
 
@@ -47,6 +51,13 @@ function LayoutComponent() {
             <Route path="tasks" element={<TasksListComponent />} />
             <Route path={currentBoard} element={<BoardComponent />} />
           </Routes>
+        </Col>
+        <Col flex={currentTask ? "360px" : "0px"}>
+          <div className="bg-white-bg shadow-sider-shadow h-full flex flex-col">
+            {currentTask !== null && (
+              <TaskSiderComponent {...currentTask}></TaskSiderComponent>
+            )}
+          </div>
         </Col>
       </Row>
     </>

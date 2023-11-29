@@ -20,6 +20,8 @@ module.exports = {
       boxShadow: {
         "sider-shadow":
           "0px 0.3px 0.9px rgba(0,0,0,0.1), 0px 1.6px 3.6px rgba(0,0,0,0.1)",
+        "right-sider-shadow":
+          "0px 1.2px 3.6px rgba(0,0,0,0.1) 0px 6.4px 14.4px rgba(0,0,0,0.1)",
       },
     },
   },

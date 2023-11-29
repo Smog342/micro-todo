@@ -9,11 +9,11 @@ const currentTaskSlice = createSlice({
   name: "currentTask",
   initialState,
   reducers: {
-    setCurrentTask(state, action: PayloadAction<Task>) {
+    setCurrentTaskRightClick(state, action: PayloadAction<Task>) {
       state.currentTask = action.payload;
     },
   },
 });
 
-export const { setCurrentTask } = currentTaskSlice.actions;
+export const { setCurrentTaskRightClick } = currentTaskSlice.actions;
 export default currentTaskSlice.reducer;
